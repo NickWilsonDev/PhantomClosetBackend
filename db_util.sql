@@ -69,11 +69,6 @@ CREATE TABLE all_cards (
 );
 
 /* insert statements */
-/* from json */
+/* from csv */
 \copy all_cards(name, manaCost, cmc, colors, colorIdentity, "type", types, subtypes, rarity, "set", setName, "text", artist, "number", "power", toughness, layout, multiverseid, imageUrl, printings, originalText, originalType, id) FROM './cards.csv' WITH (FORMAT csv);
-
-INSERT INTO users (username, password, role) VALUES
-    ('nick', 'nick', 'admin'),
-    ('rachel', 'rachel', 'admin'),
-    ('ashley', 'ashley', 'admin');
 
