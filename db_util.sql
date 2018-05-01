@@ -1,7 +1,7 @@
 -- db_util.sql
 /*
-psql -d postgres -f ./cramit.sql ====> creates db and tables
-psql -d cramit ==========> opens up db in terminal
+psql -d postgres -f ./db_util.sql ====> creates db and tables
+psql -d pc ==========> opens up db in terminal
 psql -f [file.sql] -U ubuntu -d [dbname]
 */
 
@@ -29,7 +29,7 @@ CREATE TABLE cards_at_home (
         ON UPDATE NO ACTION ON DELETE NO ACTION
 );
 
-CREATE TABLE cards_int_queue (
+CREATE TABLE cards_in_queue (
     userid integer NOT NULL,
     PRIMARY KEY (userid),
     cardid integer,
@@ -41,7 +41,17 @@ CREATE TABLE cards_int_queue (
 
 
 CREATE TABLE all_cards (
-    
+    ID SERIAL PRIMARY KEY,
+    name VARCHAR (100) UNIQUE NOT NULL,
+    manaCost VARCHAR (100),
+    colors text[],
+    colorIdentity text[]
+);
 
 /* insert statements */
+/* from json */
+INSERT INTO users (username, password) VALUES
+    ('nick', 'nick'),
+    ('rachel', 'rachel'),
+    ('ashley', 'ashley');
 
