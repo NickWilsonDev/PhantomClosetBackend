@@ -14,7 +14,7 @@
                 	"username": "testusername"
                     }
                 </h6>
-                <p>If the sign-in is in the database (passwords are stored as hashes with salt) i.e. valid, the server with response with a token.  For example</p>
+                <p>If the sign-in is in the database (passwords are stored as hashes with salt) i.e. valid, the server will respond with a token.  For example</p>
                 <h6>'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1MjUxOTU3MDAsImV4cCI6MTUyNTgwMDUwMH0.i53Bi9c6jWLeQtbAv-gCfSgdWlYiGb-iS8AmopbNEt0'</h6>
                 <p>Else, the server will respond with the string:</p>
                 <h6>'Invalid username and/or password.'</h6>
