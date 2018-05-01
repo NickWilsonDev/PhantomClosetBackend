@@ -3,7 +3,9 @@
 <h1>Background:</h1>
     <p>The server is divided into a public and private route path.  All requests that are prepended with "/public" do not need a token to compete a request.  All requests prepended with "/private" require a header with "authorization: token"</p>
     <p>Ultimately, there will be two routes under the "/private" route for customer and administer role.  This is not currently the case, however.</p>
-
+<h1>How to Set Up Your .env File</h1>
+    <p>DB_PATH=postgres://<strong>{insert_username}</strong>@localhost:5432/pc</p>
+    <p>SIGNATURE=<strong>{insert_any_password}</strong></p>
 <h1>RESTful API request</h1>
     <h2>Public</h2>
         <h3>GET Requests</h3>
