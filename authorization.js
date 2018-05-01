@@ -1,6 +1,7 @@
 require('dotenv').config()
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
+const signature = process.env.SIGNATURE;
 
 import { userByUsername } from './queries';
 
