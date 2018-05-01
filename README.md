@@ -6,6 +6,10 @@
 
 <h1>RESTful API request</h1>
     <h2>Public</h2>
+        <h3>GET Requests</h3>
+            <h4>Sets</h4>
+                <p>When there is a get request to <em>localhost:3000/public/sets</em>, the server will respond with an array of all the unique sets.  Here is an example response</p>
+                <h6>INSERT EXAMPLE HERE</h6>
         <h3>POST Requests</h3>
             <h4>Sign In</h4>
                 <p>When there is a post request to <em>localhost:3000/public/signin</em>, the server expects a username and password to be in the body.  Here is an example:</p>

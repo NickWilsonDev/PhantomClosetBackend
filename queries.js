@@ -11,9 +11,14 @@ let addUserToDb = (username, password) =>
     db.query(`
         INSERT INTO users (username, password, role)
         VALUES ('${username}', '${password}', 'customer');
-    `)
+    `);
+let getSetsDb = () => 
+    db.query(`
+        SELECT DISTINCT setName FROM allcards;
+    `);
 
 module.exports = {
     userByUsername,
-    addUserToDb
+    addUserToDb,
+    getSetsDb,
 }
