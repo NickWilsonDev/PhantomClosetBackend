@@ -5,4 +5,6 @@
     <p>Ultimately, there will be two routes under the "/private" route for customer and administer role.  This is not currently the case, however.</p>
 
 <h1>RESTful API request</h1>
-    <p></p>
+    <h2>Public</h2>
+        <h3>POST Requests</h3>
+    <h2>Private</h2>
