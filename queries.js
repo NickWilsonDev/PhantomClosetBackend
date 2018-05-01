@@ -14,7 +14,7 @@ let addUserToDb = (username, password) =>
     `);
 let getSetsDb = () => 
     db.query(`
-        SELECT DISTINCT setName FROM allcards;
+        SELECT DISTINCT setname FROM all_cards;
     `);
 
 module.exports = {
