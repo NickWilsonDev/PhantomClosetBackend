@@ -7,4 +7,6 @@
 <h1>RESTful API request</h1>
     <h2>Public</h2>
         <h3>POST Requests</h3>
+            <h4>Sign In</h4>
+            <h4>Create User</h4>
     <h2>Private</h2>
