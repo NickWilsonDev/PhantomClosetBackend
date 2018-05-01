@@ -5,12 +5,12 @@ const bodyParser = require('body-parser');
 let app = express();
 let router = new Router();
 
-import public from './public';
-import private from './private';
-import { checkToken } from './authorization';
+let public = require('./public');
+// let private = require('./private');
+let { checkToken } = require('./authorization');
 
-router.use('/public', public.routes());
-router.use('/private', checkToken, private.routes());
+router.use('/public', public);
+// router.use('/private', checkToken, private);
 
 app.use(bodyParser.json());
 app.use(router);

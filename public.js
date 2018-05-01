@@ -1,9 +1,10 @@
 const express = require('express');
 const public = new express.Router();
 
-import { postTokens } from './authorization';
+let { postTokens, addUser } = require('./authorization');
 
 
 public.post('/signin', postTokens);
+public.post('/createaccount', addUser);
 
-export default public;
+module.exports = public;
