@@ -2,13 +2,24 @@ require('dotenv').config()
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
-const express = require('express');
-const signIn = new express.Router();
-
 import { userByUsername } from './queries';
-import { postTokens } from './authorization';
 
-const signature = process.env.SIGNATURE;
+export let checkToken = async (req, res, next) => {
+  let { authorization: token } = req.headers;
+  let payload;
+  try {
+    payload = jwt.verify(token, signature);
+  } catch(err) {
+    // catch the error
+  }
+
+  if (payload) {
+    req.jwt = payload;
+    next();
+  } else {
+    res.send('Invalid Token');
+  }
+};
 
 let createToken = user =>
   jwt.sign(
@@ -17,7 +28,7 @@ let createToken = user =>
     { expiresIn: '7d' }
   );
 
-let postTokens = async (req, res) => {
+export let postTokens = async (req, res) => {
   let { email, password } = req.body;
   let user = await userByUsername(email);
   let isValid = await bcrypt.compare(password, user.password);
@@ -28,7 +39,3 @@ let postTokens = async (req, res) => {
     res.send('Invalid username and/or password.');
   }
 };
-
-signIn.post('/', postTokens);
-
-export default signIn;
