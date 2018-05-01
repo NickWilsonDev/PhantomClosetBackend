@@ -12,28 +12,29 @@
             <h4>Sets</h4>
                 <p>When there is a get request to <em>localhost:3000/public/sets</em>, the server will respond with an array of all the unique sets.  Here is an example response</p>
                 <h6>[
-    "Happy Holidays",
-    "Portal Demo Game",
-    "Wizards of the Coast Online Store",
-    "Magic Player Rewards",
-    "Pro Tour",
-    "Release Events",
-    "Summer of Magic",
-    "Media Inserts",
-    "Prerelease Events",
-    "Judge Gift Program",
-    "Unhinged",
-    "Magic Game Day",
-    "Legend Membership",
-    "Worlds",
-    "Launch Parties",
-    "Unglued",
-    "Super Series",
-    "Unstable",
-    "Wizards Play Network",
-    "World Magic Cup Qualifiers",
-    "setName"
-]</h6>
+                        "Happy Holidays",
+                        "Portal Demo Game",
+                        "Wizards of the Coast Online Store",
+                        "Magic Player Rewards",
+                        "Pro Tour",
+                        "Release Events",
+                        "Summer of Magic",
+                        "Media Inserts",
+                        "Prerelease Events",
+                        "Judge Gift Program",
+                        "Unhinged",
+                        "Magic Game Day",
+                        "Legend Membership",
+                        "Worlds",
+                        "Launch Parties",
+                        "Unglued",
+                        "Super Series",
+                        "Unstable",
+                        "Wizards Play Network",
+                        "World Magic Cup Qualifiers",
+                        "setName"
+                    ]
+                </h6>
         <h3>POST Requests</h3>
             <h4>Sign In</h4>
                 <p>When there is a post request to <em>localhost:3000/public/signin</em>, the server expects a username and password to be in the body.  Here is an example:</p>

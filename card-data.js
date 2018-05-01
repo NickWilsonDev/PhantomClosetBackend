@@ -1,9 +1,9 @@
 let { getSetsDb } = require('./queries')
 
-let getSets = (req, resp) => {
+let getSets = (req, res) => {
     getSetsDb().then(sets => {
         setNameArray = sets.map(name => name.setname);
-        resp.send(setNameArray);
+        res.send(setNameArray);
     })
 }
 
