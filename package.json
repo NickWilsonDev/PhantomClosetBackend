@@ -1,0 +1,29 @@
+{
+  "name": "phantomclosetbackend",
+  "version": "1.0.0",
+  "description": "<h1>Background:</h1>     <p>The server is divided into a public and private route path.  All requests that are prepended with \"/public\" do not need a token to compete a request.  All requests prepended with \"/private\" require a header with \"authorization: token\"</p>     <p>Ultimately, there will be two routes under the \"/private\" route for customer and administer role.  This is not currently the case, however.</p>",
+  "main": "authorization.js",
+  "dependencies": {
+    "bcrypt": "^2.0.1",
+    "body-parser": "^1.18.2",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.3",
+    "jsonwebtoken": "^8.2.1",
+    "pg-promise": "^8.4.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NickWilsonDev/PhantomClosetBackend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NickWilsonDev/PhantomClosetBackend/issues"
+  },
+  "homepage": "https://github.com/NickWilsonDev/PhantomClosetBackend#readme"
+}
