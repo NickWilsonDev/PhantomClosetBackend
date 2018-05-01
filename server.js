@@ -5,9 +5,11 @@ const bodyParser = require('body-parser');
 let app = express();
 let router = new Router();
 
-import authorize from './authorize';
+import signIn from './sign-in';
+import private from './private';
 
-router.use('/users', authorize.routes());
+router.use('/signin', signIn.routes());
+router.use('/private', private.routes());
 
 app.use(bodyParser.json());
 app.use(router);
