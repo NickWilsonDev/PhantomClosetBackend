@@ -1,9 +1,14 @@
 const express = require('express');
-const app = express();
-const router = express.Router();
+const Router = express.Router;
+const bodyParser = require('body-parser');
 
-import users from './users';
+let app = express();
+let router = new Router();
 
-router.use('/users', users.routes());
+import authorize from './authorize';
 
+router.use('/users', authorize.routes());
+
+app.use(bodyParser.json());
+app.use(router);
 app.listen(3000);
