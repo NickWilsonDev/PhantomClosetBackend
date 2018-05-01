@@ -16,7 +16,8 @@ CREATE DATABASE pc;
 CREATE TABLE users (
     ID SERIAL PRIMARY KEY,
     username VARCHAR (100),
-    password VARCHAR (100)
+    password VARCHAR (100),
+    role VARCHAR (50)
 );
 
 
@@ -50,8 +51,8 @@ CREATE TABLE all_cards (
 
 /* insert statements */
 /* from json */
-INSERT INTO users (username, password) VALUES
-    ('nick', 'nick'),
-    ('rachel', 'rachel'),
-    ('ashley', 'ashley');
+INSERT INTO users (username, password, role) VALUES
+    ('nick', 'nick', 'admin'),
+    ('rachel', 'rachel', 'admin'),
+    ('ashley', 'ashley', 'admin');
 
