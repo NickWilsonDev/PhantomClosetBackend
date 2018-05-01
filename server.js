@@ -5,11 +5,28 @@ const bodyParser = require('body-parser');
 let app = express();
 let router = new Router();
 
-import signIn from './sign-in';
+import public from './public';
 import private from './private';
 
-router.use('/signin', signIn.routes());
-router.use('/private', private.routes());
+let checkToken = async (req, res, next) => {
+  let { authorization: token } = req.headers;
+  let payload;
+  try {
+    payload = jwt.verify(token, signature);
+  } catch(err) {
+    // catch the error
+  }
+
+  if (payload) {
+    req.jwt = payload;
+    next();
+  } else {
+    res.send('Invalid Token');
+  }
+};
+
+router.use('/public', public.routes());
+router.use('/private', checkToken, private.routes());
 
 app.use(bodyParser.json());
 app.use(router);
