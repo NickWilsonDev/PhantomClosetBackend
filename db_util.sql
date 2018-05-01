@@ -15,7 +15,7 @@ CREATE DATABASE pc;
 
 CREATE TABLE users (
     ID SERIAL PRIMARY KEY,
-    username VARCHAR (100),
+    username VARCHAR (100) UNIQUE,
     password VARCHAR (100),
     role VARCHAR (50)
 );
