@@ -10,7 +10,7 @@
     <h2>Public</h2>
         <h3>GET Requests</h3>
             <h4>Sets</h4>
-                <p>When there is a get request to <em>localhost:3000/public/sets</em>, the server will respond with an array of all the unique sets.  Here is an example response</p>
+                <p>When there is a GET request to <em>localhost:3000/public/sets</em>, the server will respond with an array of all the unique sets.  Here is an example response</p>
                 <h6>[
                         "Happy Holidays",
                         "Portal Demo Game",
@@ -35,6 +35,8 @@
                         "setName"
                     ]
                 </h6>
+            <h4>Cards By Name</h4>
+                <p>You can search for cards by name by sending a GET request to <em>localhost:3000/public/cards/</em><strong>{insert_name}</strong>.  You can represent spaces with <em>%20</em>.  It will ignore capitalization.  It will return an array of card objects.  This may include the same card from multiple sets.</p>
         <h3>POST Requests</h3>
             <h4>Sign In</h4>
                 <p>When there is a post request to <em>localhost:3000/public/signin</em>, the server expects a username and password to be in the body.  Here is an example:</p>

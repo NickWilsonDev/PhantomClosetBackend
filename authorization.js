@@ -49,7 +49,7 @@ let addUser = (req, res) => {
     saltAndHashPassword(password)
     .then(hashedPassword => {
         addUserToDb(username, hashedPassword)
-        .then(data => res.send(data));
+        .then(data => res.send('User added.'));
     })
 }
 
