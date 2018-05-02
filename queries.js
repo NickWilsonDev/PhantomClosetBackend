@@ -21,7 +21,7 @@ let getCardsByNameDb = (cardName) =>
         SELECT * FROM all_cards
         WHERE name ILIKE '%${cardName}%';
     `);
-let getCardsByNameAutocomplete = (cardName) =>
+let getCardsByNameAutocompleteDb = (cardName) =>
     db.query(`
         SELECT name FROM all_cards
         WHERE name ILIKE '${cardName}%';
@@ -30,6 +30,6 @@ module.exports = {
     userByUsername,
     addUserToDb,
     getSetsDb,
-    getCardByNameDb,
-    getCardsByNameAutocomplete
+    getCardsByNameDb,
+    getCardsByNameAutocompleteDb
 }

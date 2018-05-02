@@ -15,11 +15,14 @@ let getCardsByName = (req, res) => {
 
 let getCardsByNameAutocomplete = (req, res) => {
     let card = req.params.name;
-    getCardsByNameAutocompleteDb(card).then(cards =>
-        res.send(cards))
+    getCardsByNameAutocompleteDb(card).then(names => {
+        cards = names.map(name => name.name);
+        res.send(cards);
+    })
 }
 
 module.exports = {
     getSets,
-    getCardByName
+    getCardsByName,
+    getCardsByNameAutocomplete
 }
