@@ -1,3 +1,4 @@
+
 require('dotenv').config()
 const pg = require('pg-promise')();
 const db = pg(process.env.DATABASE_URL);
@@ -20,6 +21,11 @@ let getCardsByNameDb = (cardName) =>
     db.query(`
         SELECT * FROM all_cards
         WHERE name ILIKE '%${cardName}%';
+    `);
+let getCardsBySetNameDb = (setName) =>
+    db.query(`
+        SELECT * FROM all_cards
+        WHERE setName ILIKE '%${setName}%';
     `);
 let getCardsByNameAutocompleteDb = (cardName) =>
     db.query(`

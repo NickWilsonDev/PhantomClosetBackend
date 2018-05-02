@@ -7,6 +7,12 @@ let getSets = (req, res) => {
     })
 }
 
+let getCardsInSpecificSets = (req, res) => {
+    let set = req.params.name;
+    getCardsBySetNameDb(set).then(cards => 
+        res.send(cards))
+}
+
 let getCardsByName = (req, res) => {
     let card = req.params.name;
     getCardsByNameDb(card).then(cards =>
