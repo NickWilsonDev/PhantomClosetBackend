@@ -16,9 +16,20 @@ let getSetsDb = () =>
     db.query(`
         SELECT DISTINCT setname FROM all_cards;
     `);
-
+let getCardsByNameDb = (cardName) =>
+    db.query(`
+        SELECT * FROM all_cards
+        WHERE name ILIKE '%${cardName}%';
+    `);
+let getCardsByNameAutocompleteDb = (cardName) =>
+    db.query(`
+        SELECT DISTINCT name FROM all_cards
+        WHERE name ILIKE '${cardName}%';
+    `);
 module.exports = {
     userByUsername,
     addUserToDb,
     getSetsDb,
+    getCardsByNameDb,
+    getCardsByNameAutocompleteDb
 }
