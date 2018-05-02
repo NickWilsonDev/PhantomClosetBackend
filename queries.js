@@ -23,7 +23,7 @@ let getCardsByNameDb = (cardName) =>
     `);
 let getCardsByNameAutocompleteDb = (cardName) =>
     db.query(`
-        SELECT name FROM all_cards
+        SELECT DISTINCT name FROM all_cards
         WHERE name ILIKE '${cardName}%';
     `);
 module.exports = {
