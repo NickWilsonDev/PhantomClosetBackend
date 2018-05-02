@@ -1,12 +1,19 @@
-let { getSetsDb } = require('./queries')
+let { getSetsDb, getCardByNameDb } = require('./queries')
 
-let getSets = (req, resp) => {
+let getSets = (req, res) => {
     getSetsDb().then(sets => {
         setNameArray = sets.map(name => name.setname);
-        resp.send(setNameArray);
+        res.send(setNameArray);
     })
 }
 
+let getCardByName = (req, res) => {
+    let card = req.params.name;
+    getCardByNameDb(card).then(cards =>
+        res.send(cards))
+}
+
 module.exports = {
-    getSets
+    getSets,
+    getCardByName
 }
