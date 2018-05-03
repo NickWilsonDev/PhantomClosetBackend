@@ -37,5 +37,6 @@ module.exports = {
     addUserToDb,
     getSetsDb,
     getCardsByNameDb,
-    getCardsByNameAutocompleteDb
+    getCardsByNameAutocompleteDb,
+    getCardsBySetNameDb
 }

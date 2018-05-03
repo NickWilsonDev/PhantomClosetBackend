@@ -2,7 +2,7 @@ const express = require('express');
 const public = new express.Router();
 
 let { postTokens, addUser } = require('./authorization');
-let { getSets, getCardsByName, getCardsByNameAutocomplete } = require('./card-data');
+let { getSets, getCardsByName, getCardsInSpecificSets, getCardsByNameAutocomplete } = require('./card-data');
 
 public.get('/sets', getSets);
 public.get('/sets/:set', getCardsInSpecificSets);
