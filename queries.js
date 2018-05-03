@@ -26,10 +26,16 @@ let getCardsByNameAutocompleteDb = (cardName) =>
         SELECT DISTINCT name FROM all_cards
         WHERE name ILIKE '${cardName}%';
     `);
+let addToQueueDb = (userId, cardId, position) =>
+    db.query(`
+        INSERT INTO cards_in_queue (userid, cardid, position)
+        VALUES ('${userId}', '${cardId}', '${position}');
+    `);
 module.exports = {
     userByUsername,
     addUserToDb,
     getSetsDb,
     getCardsByNameDb,
-    getCardsByNameAutocompleteDb
+    getCardsByNameAutocompleteDb,
+    addToQueueDb
 }

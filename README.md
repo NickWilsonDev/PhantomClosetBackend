@@ -61,3 +61,7 @@
                 <p>All passwords are entered hashed and salted into the database.  If the username is already in the database, it will reject the account because usernames must be unique.  When a user is successfuly added, the server will respond with the string:</p>
                 <h6>'User added.'</h6>
     <h2>Private</h2>
+        <h3>Headers for all Private Fetch Paths</h3>
+            <p>All fetch requests to the following path must have in its header a key call "authorization" with a valid user token as it's value.  This should be taken from local storage.</p>
+        <h3>POST request</h3>
+            <p>In order to add a card to a user queue, send a POST request to <em>/private/addtoqueue</em>.  In the body should be { userId: {integer}, cardId: {integer}, position: {integer} }.</p>
