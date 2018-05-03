@@ -2,9 +2,11 @@ const express = require('express');
 const public = new express.Router();
 
 let { postTokens, addUser } = require('./authorization');
-let { getSets, getCardsByName, getCardsByNameAutocomplete } = require('./card-data');
+let { getSets, getAllCards, getCardsByName, getCardsInSpecificSets, getCardsByNameAutocomplete } = require('./card-data');
 
 public.get('/sets', getSets);
+public.get('/sets/:set', getCardsInSpecificSets);
+public.get('/cards', getAllCards)
 public.get('/cards/:name', getCardsByName);
 public.get('/autocomplete/:name', getCardsByNameAutocomplete);
 public.post('/signin', postTokens);
