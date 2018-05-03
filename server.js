@@ -5,6 +5,12 @@ const bodyParser = require('body-parser');
 let app = express();
 let router = new Router();
 
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
 let public = require('./public');
 // let private = require('./private');
 let { checkToken } = require('./authorization');
