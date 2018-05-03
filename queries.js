@@ -37,6 +37,12 @@ let getCardsByNameAutocompleteDb = (cardName) =>
         WHERE name ILIKE '${cardName}%';
     `);
 
+let addToQueueDb = (userId, cardId, position) =>
+    db.query(`
+        INSERT INTO cards_in_queue (userid, cardid, position)
+        VALUES ('${userId}', '${cardId}', '${position}');
+    `);
+
 module.exports = {
     userByUsername,
     addUserToDb,
@@ -44,5 +50,6 @@ module.exports = {
     getSetsDb,
     getCardsByNameDb,
     getCardsByNameAutocompleteDb,
+    addToQueueDb,
     getCardsBySetNameDb
 }

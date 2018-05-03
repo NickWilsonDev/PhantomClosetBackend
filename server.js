@@ -12,12 +12,17 @@ app.use(function(req, res, next) {
 });
 
 let public = require('./public');
-// let private = require('./private');
+let private = require('./private');
 let { checkToken } = require('./authorization');
 
 router.use('/public', public);
-// router.use('/private', checkToken, private);
-//router.use('/', (req, res) => res.send('hello'))
 app.use(bodyParser.json());
+
+router.use('/private', checkToken, private);
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
 app.use(router);
 app.listen(process.env.PORT || 5000);

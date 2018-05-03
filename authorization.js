@@ -11,7 +11,7 @@ let checkToken = async (req, res, next) => {
   try {
     payload = jwt.verify(token, signature);
   } catch(err) {
-    // catch the error
+    console.log(err);
   }
 
   if (payload) {
@@ -42,14 +42,14 @@ let postTokens = async (req, res) => {
 };
 
 let saltAndHashPassword = (password) =>
-    bcrypt.hash(password, 10);
+  bcrypt.hash(password, 10);
 
 let addUser = (req, res) => {
     let { username, password } = req.body;
     saltAndHashPassword(password)
     .then(hashedPassword => {
         addUserToDb(username, hashedPassword)
-        .then(data => res.send('User added.'));
+        .then(res.send('User added.'));
     })
 }
 
