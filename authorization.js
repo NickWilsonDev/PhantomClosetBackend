@@ -32,10 +32,13 @@ let createToken = user =>
 let postTokens = async (req, res) => {
   let { username, password } = req.body;
   let user = await userByUsername(username);
-  let isValid = await bcrypt.compare(password, user[0].password);
+  user = user[0];
+  let isValid = await bcrypt.compare(password, user.password);
   if (isValid) {
     let token = createToken(user);
-    res.send(token);
+    user.token = token;
+    delete user.password;
+    res.send(user);
   } else {
     res.send('Invalid username and/or password.');
   }
