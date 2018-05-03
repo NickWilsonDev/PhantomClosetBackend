@@ -1,6 +1,7 @@
+
 require('dotenv').config()
 const pg = require('pg-promise')();
-const db = pg(process.env.DATABASE_URL);
+const db = pg(process.env.DB_PATH);
 
 let userByUsername = (username) =>
     db.query(`
@@ -16,20 +17,32 @@ let getSetsDb = () =>
     db.query(`
         SELECT DISTINCT setname FROM all_cards;
     `);
+let getCardsDb = () =>
+    db.query(`
+        SELECT * FROM all_cards;
+    `);
 let getCardsByNameDb = (cardName) =>
     db.query(`
         SELECT * FROM all_cards
         WHERE name ILIKE '%${cardName}%';
+    `);
+let getCardsBySetNameDb = (setName) =>
+    db.query(`
+        SELECT * FROM all_cards
+        WHERE setName ILIKE '%${setName}%';
     `);
 let getCardsByNameAutocompleteDb = (cardName) =>
     db.query(`
         SELECT DISTINCT name FROM all_cards
         WHERE name ILIKE '${cardName}%';
     `);
+
 module.exports = {
     userByUsername,
     addUserToDb,
+    getCardsDb,
     getSetsDb,
     getCardsByNameDb,
-    getCardsByNameAutocompleteDb
+    getCardsByNameAutocompleteDb,
+    getCardsBySetNameDb
 }

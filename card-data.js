@@ -1,10 +1,22 @@
-let { getSetsDb, getCardsByNameDb, getCardsByNameAutocompleteDb } = require('./queries')
+let { getSetsDb, getCardsDb, getCardsByNameDb, getCardsByNameAutocompleteDb, getCardsBySetNameDb } = require('./queries')
 
 let getSets = (req, res) => {
     getSetsDb().then(sets => {
         setNameArray = sets.map(name => name.setname);
         res.send(setNameArray);
     })
+}
+
+let getAllCards = (req, res) => {
+    getCardsDb().then(cards => {
+        res.send(cards)
+    })
+};
+
+let getCardsInSpecificSets = (req, res) => {
+    let set = req.params.set;
+    getCardsBySetNameDb(set).then(cards => 
+        res.send(cards))
 }
 
 let getCardsByName = (req, res) => {
@@ -23,6 +35,8 @@ let getCardsByNameAutocomplete = (req, res) => {
 
 module.exports = {
     getSets,
+    getAllCards,
     getCardsByName,
-    getCardsByNameAutocomplete
+    getCardsByNameAutocomplete,
+    getCardsInSpecificSets
 }
