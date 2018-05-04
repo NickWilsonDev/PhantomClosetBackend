@@ -35,10 +35,14 @@
                         "setName"
                     ]
                 </h6>
+            <h4>All Cards In Database</h4>
+                <p>You can search for all cards in the database by sending a GET request to <em>localhost:3000/public/cards/</em>.  It will return an array of card objects that includes, but not limited to, attributes for card name, card imageurl, card set name.</p>
             <h4>Cards By Name</h4>
                 <p>You can search for cards by name by sending a GET request to <em>localhost:3000/public/cards/</em><strong>{insert_name}</strong>.  You can represent spaces with <em>%20</em>.  It will ignore capitalization.  It will return an array of card objects.  This may include the same card from multiple sets.  This query has wildcards on either side of the query.  Therefore, a query "cat" can return the card object for "a <strong>cat</strong>egory of things" and "<strong>Cat</strong> Warrior".</p>
             <h4>Cards By Name Autocomplete</h4>
                 <p>You can also do a query for card titles where the wildcard is only at the end at <em>localhost:3000/public/autocomplete</em>.  It will return and array of card titles, <strong>not an array of full card objects</strong>.
+            <h4>Cards by Set Name</h4>
+                <p>A query for cards in a particular set is completed by sending a GET request to <em>localhost:3000/public/sets/<strong>{insert_set_name}</strong>.  Spaces are represented with <em>%20<em>.  It will return an array of card objects that match the set name.</p>  
         <h3>POST Requests</h3>
             <h4>Sign In</h4>
                 <p>When there is a post request to <em>localhost:3000/public/signin</em>, the server expects a username and password to be in the body.  Here is an example:</p>
