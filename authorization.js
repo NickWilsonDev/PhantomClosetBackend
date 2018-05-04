@@ -9,7 +9,7 @@ let checkToken = async (req, res, next) => {
   let { authorization: token } = req.headers;
   let payload;
   try {
-    payload = jwt.verify(token, signature);
+    payload = await jwt.verify(token, signature);
   } catch(err) {
     console.log(err);
   }
@@ -24,7 +24,8 @@ let checkToken = async (req, res, next) => {
 
 let createToken = user =>
   jwt.sign(
-    { user: user.id },
+    { user: user.id,
+      role: user.role },
     signature,
     { expiresIn: '7d' }
   );

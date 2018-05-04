@@ -52,7 +52,7 @@ let getFromQueueDb = (userId) =>
             (SELECT cardid FROM cards_in_queue WHERE userid = '${userId}');
     `);
 
-let getFromQueueDb = (userId) =>
+let getAtHomeDb = (userId) =>
     db.query(`
         SELECT * FROM all_cards WHERE cardid IN 
             (SELECT cardid FROM cards_at_home WHERE userid = '${userId}');

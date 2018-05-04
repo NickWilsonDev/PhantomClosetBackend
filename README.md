@@ -73,14 +73,16 @@
         <h3>Headers for all Private Fetch Paths</h3>
             <p>All fetch requests to the following path must have in its header a key call "authorization" with a valid user token as it's value.  This should be taken from local storage.</p>
         <h3>GET requests</h3>
-            <h4>Get users queue</h5>
+            <h4>Get Users Queue</h5>
                 <p>Just sent a get request to <em>/private/getqueue</em>.  The userid will be taken from the sent token.</p>
-            <h4>Get users athome</h5>
+            <h4>Get Users At Home</h5>
                 <p>Just sent a get request to <em>/private/getathome</em>.  The userid will be taken from the sent token.</p>
         <h3>POST requests</h3>
             <h4>Add card to queue</h4>
                 <p>In order to add a card to a user queue, send a POST request to <em>/private/addtoqueue</em>.  In the body should be { userId: {integer}, cardId: {integer}, position: {integer} }.</p>
-
+    <h2>Administrator</h2>
+        <h3>Headers for Administrator Fetches</h3>
+            <p>Just like when making requests to the private routes, you must send a valid webtoken. The users role attribute is also encoded into that token.</p>
     <h1>Deployment</h1>
         <h3>Useful Heroku Commands<h3>
         <h4>Push local db tables to heroku database</h4>

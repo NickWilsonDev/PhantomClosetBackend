@@ -8,7 +8,8 @@ let {   addToQueue,
 
 private.post('/addtoqueue', addToQueue);
 private.get('/getqueue', getFromQueue);
-private.get('/getathome', getAtHome)
+private.get('/getathome', getAtHome);
+// private.use('/administrator', checkRole, administrator);
 
 
 module.exports = private;
