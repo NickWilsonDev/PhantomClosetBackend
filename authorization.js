@@ -7,7 +7,6 @@ let { userByUsername, addUserToDb } = require('./queries');
 
 let checkToken = async (req, res, next) => {
   let { authorization: token } = req.headers;
-  console.log(token);
   let payload;
   try {
     payload = jwt.verify(token, signature);
@@ -25,7 +24,7 @@ let checkToken = async (req, res, next) => {
 
 let createToken = user =>
   jwt.sign(
-    { userId: user },
+    { user: user.id },
     signature,
     { expiresIn: '7d' }
   );

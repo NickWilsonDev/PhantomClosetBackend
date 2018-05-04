@@ -10,7 +10,7 @@ let addToQueue = (req, res) => {
 }
 
 let getFromQueue = (req, res) => {
-    let {userId} = req.body;
+    let { userId } = req.JWT;
     getFromQueueDb(userId)
     .then(data => res.send(JSON.stringify(data)))
 }
