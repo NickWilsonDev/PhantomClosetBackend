@@ -17,9 +17,12 @@ let getSetsDb = () =>
     db.query(`
         SELECT DISTINCT setname FROM all_cards;
     `);
-let getCardsDb = () =>
+let getCardsFromStandardDb = () =>
     db.query(`
-        SELECT * FROM all_cards;
+    SELECT * FROM all_cards
+    WHERE setName in ('Kaladesh', 'Aether Revolt', 
+    'Amonket', 'Hour of Devastation', 'Ixalan', 
+    'Rivals of Ixalan', 'Dominaria' );    
     `);
 let getCardsByNameDb = (cardName) =>
     db.query(`
@@ -46,7 +49,7 @@ let addToQueueDb = (userId, cardId, position) =>
 module.exports = {
     userByUsername,
     addUserToDb,
-    getCardsDb,
+    getCardsFromStandardDb,
     getSetsDb,
     getCardsByNameDb,
     getCardsByNameAutocompleteDb,
