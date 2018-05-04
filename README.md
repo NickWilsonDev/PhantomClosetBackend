@@ -65,3 +65,14 @@
             <p>All fetch requests to the following path must have in its header a key call "authorization" with a valid user token as it's value.  This should be taken from local storage.</p>
         <h3>POST request</h3>
             <p>In order to add a card to a user queue, send a POST request to <em>/private/addtoqueue</em>.  In the body should be { userId: {integer}, cardId: {integer}, position: {integer} }.</p>
+
+    <h1>Deployment</h1>
+        <h3>Useful Heroku Commands<h3>
+        <h4>Push local db tables to heroku database</h4>
+```console
+foo@bar:~$ heroku pg:push <mylocaldb> <herokudbname> --app <herokuappname>
+```
+
+        <h4>Connect to heroku postgres db</h4>
+            <p>heroku pg:psql</p>
+        <h4>
