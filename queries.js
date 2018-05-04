@@ -52,6 +52,12 @@ let getFromQueueDb = (userId) =>
             (SELECT cardid FROM cards_in_queue WHERE userid = '${userId}');
     `);
 
+let getFromQueueDb = (userId) =>
+    db.query(`
+        SELECT * FROM all_cards WHERE cardid IN 
+            (SELECT cardid FROM cards_at_home WHERE userid = '${userId}');
+    `);
+
 module.exports = {
     userByUsername,
     addUserToDb,
@@ -61,5 +67,6 @@ module.exports = {
     getCardsByNameAutocompleteDb,
     addToQueueDb,
     getFromQueueDb,
-    getCardsBySetNameDb
+    getCardsBySetNameDb,
+    getAtHomeDb
 }

@@ -1,10 +1,14 @@
 const express = require('express');
 const private = new express.Router();
 
-let { addToQueue, getFromQueue } = require('./user-data');
+let {   addToQueue, 
+        getFromQueue,
+        getAtHome 
+    } = require('./user-data');
 
-private.post('/addtoqueue/', addToQueue);
+private.post('/addtoqueue', addToQueue);
+private.get('/getqueue', getFromQueue);
+private.get('/getathome', getAtHome)
 
-private.get('/getqueue/', getFromQueue);
 
 module.exports = private;
