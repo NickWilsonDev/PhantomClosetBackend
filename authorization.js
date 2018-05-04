@@ -57,8 +57,18 @@ let addUser = (req, res) => {
     })
 }
 
+let checkRole = (req, res, next) => {
+  let { role } = req.jwt;
+  if (role === 'administrator') {
+    next();
+  } else {
+    res.send('this is not an administrator')
+  }
+}
+
 module.exports = {
     addUser,
     postTokens,
-    checkToken
+    checkToken,
+    checkRole
 }
