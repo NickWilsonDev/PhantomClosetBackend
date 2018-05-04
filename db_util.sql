@@ -72,3 +72,11 @@ CREATE TABLE all_cards (
 /* from csv */
 \copy all_cards(name, manaCost, cmc, colors, colorIdentity, "type", types, subtypes, rarity, "set", setName, "text", artist, "number", "power", toughness, layout, multiverseid, imageUrl, printings, originalText, originalType, id) FROM './cards.csv' WITH (FORMAT csv);
 
+\copy all_cards(name, manaCost, cmc, colors, colorIdentity, "type", types, subtypes, rarity, "set", setName, "text", artist, "number", "power", toughness, layout, multiverseid, imageUrl, printings, originalText, originalType, id) FROM './newcards.csv' WITH (FORMAT csv);
+
+/*
+DELETE FROM all_cards where cardid IN (
+    SELECT cardid from all_cards ORDER BY cardid DESC limit 29000);
+*/
+
+DELETE FROM all_cards where imageUrl is NULL;
