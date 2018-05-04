@@ -27,7 +27,7 @@ let getCardsFromStandardDb = () =>
 let getCardsByNameDb = (cardName) =>
     db.query(`
         SELECT * FROM all_cards
-        WHERE name ILIKE '%${cardName}%';
+        WHERE name ILIKE '${cardName}';
     `);
 let getCardsBySetNameDb = (setName) =>
     db.query(`
