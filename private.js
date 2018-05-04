@@ -1,10 +1,16 @@
 const express = require('express');
 const private = new express.Router();
+const { checkRole } = require('./authorization')
+const {   addToQueue, 
+        getFromQueue,
+        getAtHome 
+    } = require('./user-data');
+const administrator = require('./adminstrator')
 
-let { addToQueue, getFromQueue } = require('./user-data');
+private.post('/addtoqueue', addToQueue);
+private.get('/getqueue', getFromQueue);
+private.get('/getathome', getAtHome);
+private.use('/administrator', checkRole, administrator);
 
-private.post('/addtoqueue/', addToQueue);
-
-private.get('/getqueue/', getFromQueue);
 
 module.exports = private;

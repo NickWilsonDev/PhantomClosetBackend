@@ -7,10 +7,9 @@ let { userByUsername, addUserToDb } = require('./queries');
 
 let checkToken = async (req, res, next) => {
   let { authorization: token } = req.headers;
-  console.log(token);
   let payload;
   try {
-    payload = jwt.verify(token, signature);
+    payload = await jwt.verify(token, signature);
   } catch(err) {
     console.log(err);
   }
@@ -25,7 +24,8 @@ let checkToken = async (req, res, next) => {
 
 let createToken = user =>
   jwt.sign(
-    { userId: user },
+    { user: user.id,
+      role: user.role },
     signature,
     { expiresIn: '7d' }
   );
@@ -57,8 +57,18 @@ let addUser = (req, res) => {
     })
 }
 
+let checkRole = (req, res, next) => {
+  let { role } = req.jwt;
+  if (role === 'administrator') {
+    next();
+  } else {
+    res.send('this is not an administrator')
+  }
+}
+
 module.exports = {
     addUser,
     postTokens,
-    checkToken
+    checkToken,
+    checkRole
 }

@@ -1,6 +1,7 @@
 let { 
     addToQueueDb,
-    getFromQueueDb
+    getFromQueueDb,
+    getAtHomeDb
  } = require('./queries')
 
 let addToQueue = (req, res) => {
@@ -10,12 +11,19 @@ let addToQueue = (req, res) => {
 }
 
 let getFromQueue = (req, res) => {
-    let {userId} = req.body;
+    let { userId } = req.JWT;
     getFromQueueDb(userId)
-    .then(data => res.send(JSON.stringify(data)))
+    .then(data => res.send(data))
+}
+
+let getAtHome = (req, res) => {
+    let { userId } = req.JWT;
+    getAtHomeDb(userId)
+    .then(data => res.send(data))
 }
 
 module.exports = {
     addToQueue,
-    getFromQueue
+    getFromQueue,
+    getAtHome
 }

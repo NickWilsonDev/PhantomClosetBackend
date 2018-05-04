@@ -42,7 +42,7 @@
             <h4>Cards By Name Autocomplete</h4>
                 <p>You can also do a query for card titles where the wildcard is only at the end at <em>localhost:3000/public/autocomplete</em>.  It will return and array of card titles, <strong>not an array of full card objects</strong>.
             <h4>Cards by Set Name</h4>
-                <p>A query for cards in a particular set is completed by sending a GET request to <em>localhost:3000/public/sets/<strong>{insert_set_name}</strong>.  Spaces are represented with <em>%20<em>.  It will return an array of card objects that match the set name.</p>  
+                <p>A query for cards in a particular set is completed by sending a GET request to <em>localhost:3000/public/sets/<strong>{insert_set_name}</strong>.  Spaces are represented with <em>%20</em>.  It will return an array of card objects that match the set name.</p>  
         <h3>POST Requests</h3>
             <h4>Sign In</h4>
                 <p>When there is a post request to <em>localhost:3000/public/signin</em>, the server expects a username and password to be in the body.  Here is an example:</p>
@@ -72,9 +72,17 @@
     <h2>Private</h2>
         <h3>Headers for all Private Fetch Paths</h3>
             <p>All fetch requests to the following path must have in its header a key call "authorization" with a valid user token as it's value.  This should be taken from local storage.</p>
-        <h3>POST request</h3>
-            <p>In order to add a card to a user queue, send a POST request to <em>/private/addtoqueue</em>.  In the body should be { userId: {integer}, cardId: {integer}, position: {integer} }.</p>
-
+        <h3>GET requests</h3>
+            <h4>Get Users Queue</h5>
+                <p>Just sent a get request to <em>/private/getqueue</em>.  The userid will be taken from the sent token.</p>
+            <h4>Get Users At Home</h5>
+                <p>Just sent a get request to <em>/private/getathome</em>.  The userid will be taken from the sent token.</p>
+        <h3>POST requests</h3>
+            <h4>Add card to queue</h4>
+                <p>In order to add a card to a user queue, send a POST request to <em>/private/addtoqueue</em>.  In the body should be { userId: {integer}, cardId: {integer}, position: {integer} }.</p>
+    <h2>Administrator</h2>
+        <h3>Headers for Administrator Fetches</h3>
+            <p>Just like when making requests to the private routes, you must send a valid webtoken. The users role attribute is also encoded into that token.</p>
     <h1>Deployment</h1>
         <h3>Useful Heroku Commands<h3>
         <h4>Push local db tables to heroku database</h4>

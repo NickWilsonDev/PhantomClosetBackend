@@ -23,7 +23,6 @@ CREATE TABLE users (
 
 CREATE TABLE cards_at_home (
     userid integer NOT NULL,
-    PRIMARY KEY (userid),
     cardid integer,
     CONSTRAINT cards_at_home_user_id_fkey FOREIGN KEY(userid)
         REFERENCES users (ID) MATCH SIMPLE
@@ -32,7 +31,6 @@ CREATE TABLE cards_at_home (
 
 CREATE TABLE cards_in_queue (
     userid integer NOT NULL,
-    PRIMARY KEY (userid),
     cardid integer,
     position integer,
     CONSTRAINT cards_at_home_user_id_fkey FOREIGN KEY(userid)

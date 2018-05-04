@@ -27,7 +27,7 @@ let getCardsFromStandardDb = () =>
 let getCardsByNameDb = (cardName) =>
     db.query(`
         SELECT * FROM all_cards
-        WHERE name ILIKE '%${cardName}%';
+        WHERE name ILIKE '${cardName}';
     `);
 let getCardsBySetNameDb = (setName) =>
     db.query(`
@@ -52,6 +52,12 @@ let getFromQueueDb = (userId) =>
             (SELECT cardid FROM cards_in_queue WHERE userid = '${userId}');
     `);
 
+let getAtHomeDb = (userId) =>
+    db.query(`
+        SELECT * FROM all_cards WHERE cardid IN 
+            (SELECT cardid FROM cards_at_home WHERE userid = '${userId}');
+    `);
+
 module.exports = {
     userByUsername,
     addUserToDb,
@@ -61,5 +67,6 @@ module.exports = {
     getCardsByNameAutocompleteDb,
     addToQueueDb,
     getFromQueueDb,
-    getCardsBySetNameDb
+    getCardsBySetNameDb,
+    getAtHomeDb
 }

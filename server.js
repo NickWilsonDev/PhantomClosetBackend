@@ -12,11 +12,11 @@ let router = new Router();
 router.use('/public', public);
 router.use('/private', checkToken, private);
 
-app.use(bodyParser.json());
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, authorization");
     next();
   });
+app.use(bodyParser.json());
 app.use(router);
 app.listen(process.env.PORT || 5000);
