@@ -7,6 +7,7 @@ let { userByUsername, addUserToDb } = require('./queries');
 
 let checkToken = async (req, res, next) => {
   let { authorization: token } = req.headers;
+  console.log(token);
   let payload;
   try {
     payload = jwt.verify(token, signature);
@@ -24,7 +25,7 @@ let checkToken = async (req, res, next) => {
 
 let createToken = user =>
   jwt.sign(
-    { userId: user.ID },
+    { userId: user },
     signature,
     { expiresIn: '7d' }
   );
@@ -32,10 +33,13 @@ let createToken = user =>
 let postTokens = async (req, res) => {
   let { username, password } = req.body;
   let user = await userByUsername(username);
-  let isValid = await bcrypt.compare(password, user[0].password);
+  user = user[0];
+  let isValid = await bcrypt.compare(password, user.password);
   if (isValid) {
     let token = createToken(user);
-    res.send(token);
+    user.token = token;
+    delete user.password;
+    res.send(user);
   } else {
     res.send('Invalid username and/or password.');
   }

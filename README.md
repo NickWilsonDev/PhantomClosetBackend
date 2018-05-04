@@ -47,8 +47,13 @@
                 	"username": "testusername"
                     }
                 </h6>
-                <p>If the sign-in is in the database (passwords are stored as hashes with salt) i.e. valid, the server will respond with a token.  For example</p>
-                <h6>'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1MjUxOTU3MDAsImV4cCI6MTUyNTgwMDUwMH0.i53Bi9c6jWLeQtbAv-gCfSgdWlYiGb-iS8AmopbNEt0'</h6>
+                <p>If the sign-in is in the database (passwords are stored as hashes with salt) i.e. valid, the server will respond with a userObject.  For example</p>
+                <h6>{
+                    "id": 10,
+                    "username": "newuser",
+                    "role": "customer",
+                    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1MjUzODQ0NTksImV4cCI6MTUyNTk4OTI1OX0.bXSEEFnDKKSp56ECdgmzde7PRCoCtBSNu-M4B5hT_Bc"} 
+                    </h6>
                 <p>Else, the server will respond with the string:</p>
                 <h6>'Invalid username and/or password.'</h6>
             <h4>Create User</h4>

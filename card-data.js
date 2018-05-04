@@ -2,7 +2,8 @@ let {
     getSetsDb, 
     getCardsByNameDb, 
     getCardsByNameAutocompleteDb,
-    getCardsBySetNameDb
+    getCardsBySetNameDb,
+    getCardsDb
  } = require('./queries')
 
 let getSets = (req, res) => {
