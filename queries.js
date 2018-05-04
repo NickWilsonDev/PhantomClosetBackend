@@ -1,7 +1,7 @@
 
 require('dotenv').config()
 const pg = require('pg-promise')();
-const db = pg(process.env.DB_PATH);
+const db = pg(process.env.DATABASE_URL);
 
 let userByUsername = (username) =>
     db.query(`
