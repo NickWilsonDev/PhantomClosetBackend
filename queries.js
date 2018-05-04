@@ -46,6 +46,12 @@ let addToQueueDb = (userId, cardId, position) =>
         VALUES ('${userId}', '${cardId}', '${position}');
     `);
 
+let getFromQueueDb = (userId) =>
+    db.query(`
+        SELECT * FROM all_cards WHERE cardid IN 
+            (SELECT cardid FROM cards_in_queue WHERE userid = '${userId}');
+    `);
+
 module.exports = {
     userByUsername,
     addUserToDb,
@@ -54,5 +60,6 @@ module.exports = {
     getCardsByNameDb,
     getCardsByNameAutocompleteDb,
     addToQueueDb,
+    getFromQueueDb,
     getCardsBySetNameDb
 }

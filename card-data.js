@@ -3,7 +3,8 @@ let {
     getCardsByNameDb, 
     getCardsByNameAutocompleteDb,
     getCardsBySetNameDb,
-    getCardsFromStandardDb
+    getCardsFromStandardDb,
+    getFromQueueDb
  } = require('./queries')
 
 let getSets = (req, res) => {
@@ -39,10 +40,17 @@ let getCardsByNameAutocomplete = (req, res) => {
     })
 }
 
+let getCardsFromUserQueue = (req, res) => {
+    let userid = req.params.userid;
+    getFromQueueDb(userid).then( cards =>
+        res.send(cards))
+}
+
 module.exports = {
     getSets,
     getCardsFromStandard,
     getCardsByName,
     getCardsByNameAutocomplete,
-    getCardsInSpecificSets
+    getCardsInSpecificSets,
+    getCardsFromUserQueue
 }
