@@ -91,8 +91,13 @@ foo@bar:~$ heroku pg:push <mylocaldb> <herokudbname> --app <herokuappname>
 ```
 
         <h4>Connect to heroku postgres db</h4>
-            <p>heroku pg:psql</p>
+```console
+foo@bar:~$ heroku pg:psql
+```
         <h4> </h4>
 
     <h3>At end push master backend to heroku</h3>
-        <p>git push heroku master </p>
+```console
+foo@bar:~$ git push heroku master
+```
+
